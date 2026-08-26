@@ -1,20 +1,28 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TreeJSON</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>TreeJSON — Interactive JSON Viewer</title>
+    <link rel="stylesheet" href="css/demo.css">
 </head>
 <body>
-    <div class="container">
-        <div class="json-viewer">
-            <div class="line-numbers" id="line-numbers"></div>
-            <div class="json-content" id="json-content"></div>
-        </div>
-        <div id="error-message" class="error-message" style="display: none;"></div>
-    </div>
+    <main class="demo-page">
+        <h1>TreeJSON</h1>
+        <p class="demo-subtitle">A tiny, dependency-free, themeable JSON viewer. Paste your own JSON below.</p>
 
-    <script src="js/script.js"></script>
+        <div id="viewer"></div>
+
+        <h2>Just want colored JSON somewhere else on the page?</h2>
+        <p class="demo-subtitle">
+            <code>TreeJSON.toHTML(data)</code> returns a plain HTML string — no textarea, no line numbers,
+            no click handlers. Assign it to any element's <code>innerHTML</code> and it follows the theme
+            toggle above.
+        </p>
+        <div id="static-example"></div>
+    </main>
+
+    <script src="js/treejson.js"></script>
+    <script src="js/demo.js"></script>
 </body>
 </html>
