@@ -1,0 +1,34 @@
+body {
+    margin: 0;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    background-color: #fafafa;
+    color: #333;
+}
+
+.demo-page {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 32px 16px 64px;
+}
+
+.demo-page h1 {
+    margin: 0 0 4px;
+    font-size: 28px;
+}
+
+.demo-subtitle {
+    margin: 0 0 24px;
+    color: #666;
+    font-size: 14px;
+}
+
+.demo-page h2 {
+    margin-top: 40px;
+    font-size: 20px;
+}
+
+.demo-page code {
+    background-color: #eee;
+    padding: 1px 5px;
+    border-radius: 3px;
+}

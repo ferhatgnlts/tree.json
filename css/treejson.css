@@ -1,0 +1,244 @@
+/**
+ * TreeJSON library styles.
+ * Everything is scoped under .treejson so it's safe to drop into any page
+ * without leaking styles into (or being affected by) the host page.
+ *
+ * Theming: set data-theme="light" or data-theme="dark" on the .treejson
+ * container (TreeJSON instances do this for you via setTheme()/options.theme).
+ * Override any --tj-* variable below to build a custom theme.
+ */
+
+.treejson {
+    --tj-bg: #f5f5f5;
+    --tj-panel-bg: #ffffff;
+    --tj-text: #333333;
+    --tj-border: #dddddd;
+    --tj-line-numbers-bg: #f0f0f0;
+    --tj-line-numbers-color: #666666;
+    --tj-key-color: #9c27b0;
+    --tj-string-color: #4caf50;
+    --tj-number-color: #2196f3;
+    --tj-boolean-color: #ff9800;
+    --tj-null-color: #f44336;
+    --tj-bracket-color: #555555;
+    --tj-comma-color: #888888;
+    --tj-error-color: #d32f2f;
+    --tj-error-bg: #ffecec;
+    --tj-accent: #2196f3;
+    --tj-accent-text: #ffffff;
+    --tj-children-border: #dddddd;
+
+    box-sizing: border-box;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    color: var(--tj-text);
+    background-color: var(--tj-bg);
+}
+
+.treejson[data-theme="dark"] {
+    --tj-bg: #1e1e1e;
+    --tj-panel-bg: #252526;
+    --tj-text: #d4d4d4;
+    --tj-border: #3c3c3c;
+    --tj-line-numbers-bg: #1a1a1a;
+    --tj-line-numbers-color: #7f8792;
+    --tj-key-color: #9cdcfe;
+    --tj-string-color: #ce9178;
+    --tj-number-color: #b5cea8;
+    --tj-boolean-color: #569cd6;
+    --tj-null-color: #f44747;
+    --tj-bracket-color: #d4d4d4;
+    --tj-comma-color: #858585;
+    --tj-error-color: #f48771;
+    --tj-error-bg: #4b1113;
+    --tj-accent: #0e639c;
+    --tj-accent-text: #ffffff;
+    --tj-children-border: #3c3c3c;
+}
+
+.treejson *,
+.treejson *::before,
+.treejson *::after {
+    box-sizing: border-box;
+}
+
+.treejson-input {
+    display: block;
+    width: 100%;
+    min-height: 140px;
+    resize: vertical;
+    font-family: inherit;
+    font-size: 14px;
+    padding: 10px;
+    border: 1px solid var(--tj-border);
+    border-radius: 4px;
+    background-color: var(--tj-panel-bg);
+    color: var(--tj-text);
+}
+
+.treejson-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 8px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+}
+
+.treejson-btn {
+    font-family: inherit;
+    font-size: 14px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    background-color: var(--tj-accent);
+    color: var(--tj-accent-text);
+    cursor: pointer;
+}
+
+.treejson-btn:hover {
+    opacity: 0.9;
+}
+
+.treejson-theme-btn {
+    margin-left: auto;
+    background-color: transparent;
+    color: var(--tj-text);
+    border: 1px solid var(--tj-border);
+}
+
+.treejson-hint {
+    font-size: 12px;
+    color: var(--tj-line-numbers-color);
+}
+
+.treejson-viewer {
+    display: flex;
+    border: 1px solid var(--tj-border);
+    border-radius: 4px;
+    background-color: var(--tj-panel-bg);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.treejson-line-numbers {
+    background-color: var(--tj-line-numbers-bg);
+    color: var(--tj-line-numbers-color);
+    padding: 10px 5px;
+    text-align: right;
+    user-select: none;
+    border-right: 1px solid var(--tj-border);
+    min-width: 30px;
+    line-height: 1.5;
+    flex-shrink: 0;
+}
+
+.treejson-content {
+    flex-grow: 1;
+    padding: 10px;
+    overflow-x: auto;
+    position: relative;
+    white-space: pre;
+    line-height: 1.5;
+}
+
+.treejson-line {
+    display: block;
+    min-height: 1.5em;
+}
+
+.treejson-key { color: var(--tj-key-color); }
+.treejson-string { color: var(--tj-string-color); }
+.treejson-number { color: var(--tj-number-color); }
+.treejson-boolean { color: var(--tj-boolean-color); }
+.treejson-null { color: var(--tj-null-color); }
+.treejson-bracket { color: var(--tj-bracket-color); }
+.treejson-comma { color: var(--tj-comma-color); }
+.treejson-truncated { color: var(--tj-line-numbers-color); font-style: italic; }
+
+/* Output of the static TreeJSON.toHTML() helper — no line numbers, no
+   collapsing, just a colored, indented block you can drop anywhere. */
+.treejson-static-content {
+    margin: 0;
+    padding: 10px;
+    background-color: var(--tj-panel-bg);
+    border: 1px solid var(--tj-border);
+    border-radius: 4px;
+    overflow-x: auto;
+    white-space: pre;
+    line-height: 1.5;
+}
+
+.treejson-collapsible {
+    cursor: pointer;
+    margin-right: 4px;
+    color: var(--tj-bracket-color);
+    user-select: none;
+    display: inline-block;
+    width: 15px;
+    text-align: center;
+}
+
+.treejson-children {
+    margin-left: 20px;
+    border-left: 1px dotted var(--tj-children-border);
+    padding-left: 15px;
+}
+
+.treejson-collapsed > .treejson-children {
+    display: none;
+}
+
+.treejson-collapsed > .treejson-collapsible::after {
+    content: "+";
+}
+
+.treejson-collapsible::after {
+    content: "-";
+}
+
+.treejson-error-line {
+    background-color: var(--tj-error-bg);
+    color: var(--tj-error-color);
+    font-weight: bold;
+}
+
+.treejson-error {
+    color: var(--tj-error-color);
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid var(--tj-error-color);
+    border-radius: 4px;
+    background-color: var(--tj-error-bg);
+}
+
+/* Responsive: more compact on small screens */
+@media (max-width: 600px) {
+    .treejson-input {
+        font-size: 13px;
+        min-height: 110px;
+    }
+
+    .treejson-content {
+        padding: 8px;
+        font-size: 13px;
+    }
+
+    .treejson-line-numbers {
+        padding: 8px 4px;
+        min-width: 24px;
+        font-size: 13px;
+    }
+
+    .treejson-children {
+        margin-left: 12px;
+        padding-left: 8px;
+    }
+
+    .treejson-toolbar {
+        gap: 6px;
+    }
+
+    .treejson-theme-btn {
+        margin-left: 0;
+    }
+}
